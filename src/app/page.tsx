@@ -2,15 +2,15 @@
 
 const bets = [
   {
-    name: "Tiago",
+    name: "Yasmin",
     date: "2025-08-30",
   },
   {
-    name: "Anna",
+    name: "Rosa",
     date: "2025-08-28",
   },
   {
-    name: "João",
+    name: "Pamela",
     date: "2025-09-04",
   },
 ];
