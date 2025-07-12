@@ -21,6 +21,10 @@ const bets = [
     name: "Catarina",
     date: "2025/08/12",
   },
+  {
+    name: "Charles",
+    date: "2025/08/10",
+  },
 ];
 
 // Função para saber quem tá vencendo (mais próximo da data)
@@ -81,10 +85,15 @@ export default function Home() {
             <br />
           </p>
          {closestBets.map((bet) => (
-            <p key={bet.name} className="text-4xl pt-4 font-extrabold text-sky-900">
+            <p key={bet.name} className="text-4xl pt-4 font-extrabold text-sky-700">
               🏆 {bet.name} 🏆
             </p>
             ))}
+            <p className="my-4 text-md font-semibold text-sky-800">
+              Com o prêmio corrente de:
+            <br />
+          </p>
+          <p className="text-2xl font-extrabold text-green-700">💰 R${bets.length * 10},00 💰</p>
         </section>
 
      <section
