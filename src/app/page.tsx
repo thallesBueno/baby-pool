@@ -17,12 +17,21 @@ const bets = [
 
 // Função para saber quem tá vencendo (mais próximo da data)
 function getClosestBets(today: Date) {
+  // Função para zerar horas, minutos, segundos e ms, retornando só o dia local
+  function startOfDay(date: Date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  const todayStart = startOfDay(today);
+
   const betsWithDistance = bets
     .filter((bet) => !!bet.date)
     .map((bet) => {
-      const betDate = new Date(bet.date);
-      const diff = Math.abs(betDate.getTime() - today.getTime());
-      return { ...bet, diff };
+      const betDate = startOfDay(new Date(bet.date));
+
+      const diffInMs = Math.abs(betDate.getTime() - todayStart.getTime());
+      const diffInDays = diffInMs / (1000 * 60 * 60 * 24); // converte ms para dias
+      return { ...bet, diff: diffInDays };
     });
 
   betsWithDistance.sort((a, b) => a.diff - b.diff);
@@ -35,9 +44,8 @@ function getClosestBets(today: Date) {
 }
 
 export default function Home() {
-  const today = new Date("2025-07-11");
+  const today = new Date();
   const closestBets = getClosestBets(today);
-
   // Cria uma cópia ordenada
   const sortedBets = [...bets].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -71,18 +79,22 @@ export default function Home() {
             ))}
         </section>
 
-        <section
-          aria-label="Regras do Bolão"
-          className="bg-sky-50 border border-sky-200 rounded-lg p-6 shadow-sm text-center max-w-2xl"
-        >
-          <h2 className="text-xl font-bold text-sky-700 mb-4">
-            Regras do Bolão
-          </h2>
-          <p className="text-neutral-700 leading-relaxed">
-            Cada pessoa dá um palpite com data. Quem chegar mais perto do
-            nascimento do Arthur ganha! Em caso de empate, o prêmio será divido entre os ganhadores! 🎉
-          </p>
-        </section>
+     <section
+  aria-label="Regras do Bolão"
+  className="bg-sky-50 border border-sky-200 rounded-lg p-6 shadow-sm text-center max-w-2xl"
+>
+  <h2 className="text-xl font-bold text-sky-700 mb-3">
+    Regras do Bolão
+  </h2>
+  <ul className="text-neutral-700 text-md list-decimal list-inside leading-relaxed space-y-2 text-left max-w-md mx-auto">
+    <li className="mb-2">Cada participante dá um palpite com data.</li>
+    <li className="mb-2">R$10,00 para participar.</li>
+    <li className="mb-2">O ganhador leva todo o valor arrecadado.</li>
+    <li className="mb-2">Em caso de empate, o prêmio será dividido igualmente entre os vencedores.</li>
+    <li>Boa sorte e divirta-se! 🎉</li>
+  </ul>
+</section>
+
 
         <section
           aria-label="Tabela de Palpites"
