@@ -47,7 +47,7 @@ export default function Home() {
     <>
       {/* BACKGROUND BLUR LAYER */}
       <div
-        className="fixed inset-0 z-0 bg-[url('/bg.png')] bg-no-repeat bg-cover bg-center filter blur-[1px] opacity-80"
+        className="fixed inset-0 z-0 bg-[url('/bg.png')] bg-cover bg-center filter blur-[1px] opacity-80"
         aria-hidden="true"
       />
 
