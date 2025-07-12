@@ -13,6 +13,14 @@ const bets = [
     name: "Pamela",
     date: "2025/08/15",
   },
+  {
+    name: "Rosane",
+    date: "2025/08/06",
+  },
+  {
+    name: "Catarina",
+    date: "2025/08/12",
+  },
 ];
 
 // Função para saber quem tá vencendo (mais próximo da data)
