@@ -29,6 +29,10 @@ const bets = [
     name: "Priscila",
     date: "2025/08/16",
   },
+    {
+    name: "Eraldo",
+    date: "2025/08/14",
+  },
 ];
 
 
