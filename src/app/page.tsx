@@ -29,12 +29,19 @@ const bets = [
     name: "Priscila",
     date: "2025/08/16",
   },
-    {
+  {
     name: "Eraldo",
     date: "2025/08/14",
   },
+  {
+    name: "Shery",
+    date: "2025/08/16",
+  },
+  {
+    name: "Marcos",
+    date: "2025/08/21",
+  },
 ];
-
 
 // Função para saber quem tá vencendo (mais próximo da data)
 function getClosestBets(today: Date) {
@@ -82,7 +89,6 @@ export default function Home() {
 
       {/* CONTEÚDO PRINCIPAL */}
       <main className="relative z-10 flex flex-col items-center min-h-screen bg-transparent px-4 py-12 md:px-8 gap-4 font-sans text-neutral-800">
-
         <section
           aria-label="Palpite mais próximo"
           className="bg-sky-50 border border-sky-200 rounded-lg p-4 md:p-6 py-8 shadow-md text-center w-full max-w-md"
@@ -93,34 +99,41 @@ export default function Home() {
               : "Se o Arthur nascer hoje, os campeões serão:"}
             <br />
           </p>
-         {closestBets.map((bet) => (
-            <p key={bet.name} className="text-4xl pt-4 font-extrabold text-sky-700">
+          {closestBets.map((bet) => (
+            <p
+              key={bet.name}
+              className="text-4xl pt-4 font-extrabold text-sky-700"
+            >
               🏆 {bet.name} 🏆
             </p>
-            ))}
-            <p className="my-4 text-md font-semibold text-sky-800">
-              Com o prêmio corrente de:
+          ))}
+          <p className="my-4 text-md font-semibold text-sky-800">
+            Com o prêmio corrente de:
             <br />
           </p>
-          <p className="text-2xl font-extrabold text-green-700">💰 R${bets.length * 10},00 💰</p>
+          <p className="text-2xl font-extrabold text-green-700">
+            💰 R${bets.length * 10},00 💰
+          </p>
         </section>
 
-     <section
-  aria-label="Regras do Bolão"
-  className="bg-sky-50 border border-sky-200 rounded-lg p-6 shadow-sm text-center max-w-2xl"
->
-  <h2 className="text-xl font-bold text-sky-700 mb-3">
-    Regras do Bolão
-  </h2>
-  <ul className="text-neutral-700 text-md list-decimal list-inside leading-relaxed space-y-2 text-left max-w-md mx-auto">
-    <li className="mb-2">Cada participante dá um palpite com data.</li>
-    <li className="mb-2">R$10,00 para participar.</li>
-    <li className="mb-2">O ganhador leva todo o valor arrecadado.</li>
-    <li className="mb-2">Em caso de empate, o prêmio será dividido igualmente entre os vencedores.</li>
-    <li>Boa sorte e divirta-se! 🎉</li>
-  </ul>
-</section>
-
+        <section
+          aria-label="Regras do Bolão"
+          className="bg-sky-50 border border-sky-200 rounded-lg p-6 shadow-sm text-center max-w-2xl"
+        >
+          <h2 className="text-xl font-bold text-sky-700 mb-3">
+            Regras do Bolão
+          </h2>
+          <ul className="text-neutral-700 text-md list-decimal list-inside leading-relaxed space-y-2 text-left max-w-md mx-auto">
+            <li className="mb-2">Cada participante dá um palpite com data.</li>
+            <li className="mb-2">R$10,00 para participar.</li>
+            <li className="mb-2">O ganhador leva todo o valor arrecadado.</li>
+            <li className="mb-2">
+              Em caso de empate, o prêmio será dividido igualmente entre os
+              vencedores.
+            </li>
+            <li>Boa sorte e divirta-se! 🎉</li>
+          </ul>
+        </section>
 
         <section
           aria-label="Tabela de Palpites"
@@ -152,7 +165,8 @@ export default function Home() {
                 >
                   <td className="px-4 py-3">
                     {bet.name}
-                    {closestBets.some((winner) => winner.name === bet.name) && " 🏆"}
+                    {closestBets.some((winner) => winner.name === bet.name) &&
+                      " 🏆"}
                   </td>
                   <td className="px-4 py-3">
                     {bet.date
