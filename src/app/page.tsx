@@ -50,8 +50,12 @@ const bets = [
     date: "2025/08/19",
   },
   {
-    name: "Gabriel mancha",
+    name: "Mancha",
     date: "2025/08/20",
+  },
+  {
+    name: "Marcel",
+    date: "2025/08/16",
   }
 ];
 
